@@ -38,8 +38,11 @@ function checkAnswer(){
     let isCorrect = userAnswer === correctAnswer[0]
     if (isCorrect){
         alert(`You have got it right!`)
+        incrementScore()
+
     }else{
         alert(`Awww...You have entered ${userAnswer}, the correct answer is ${correctAnswer[0]}`)
+        incrementWrongAnswer()
     }
     runGame(correctAnswer[1]);
 }
@@ -58,13 +61,25 @@ function calculateCorrectAnswer(){
         throw`Uninmplemented operator ${operator}.Aborting!`;
     }
 }
+/**
+ * increment the correct answer score
+ */
 function incrementScore(){
-
+    let score = parseInt(document.getElementById('score').innerText);
+    score += 1;
+    document.getElementById('score').innerText = score;
 }
+/**
+ * increment the wrong answer tally
+ */
 function incrementWrongAnswer(){
-
+    let incorrect = parseInt(document.getElementById('incorrect').innerText);
+    incorrect +=1;
+    document.getElementById('incorrect').innerText = incorrect;
 }
-
+/**
+ * Displays the addition quest
+ */
 function displayAdditionQuestion (operand1, operand2){
     document.getElementById('operand1').textContent = operand1;
     document.getElementById('operand2').textContent = operand2;

@@ -11,6 +11,14 @@ for (let button of buttons){
             }
         })
     }
+    document.getElementById('answer-box').addEventListener('keydown', function(event){
+        if(event.key === 'Enter'){
+            checkAnswer();
+        }
+    })
+
+    
+
     runGame("addition");
 })
 /**
@@ -18,6 +26,8 @@ for (let button of buttons){
  * and after the user's answer has been processed
  */
 function runGame(gameType){
+    document.getElementById('answer-box').value = ""
+    document.getElementById('answer-box').focus();
 
    let num1= Math.floor(Math.random() * 25)+1;
    let num2= Math.floor(Math.random() * 25)+1;
@@ -111,7 +121,7 @@ function displaySubtractQuestion(operand1, operand2){
     
 }
 /**
- * Displays the Multipication question
+ * Displays the Multiplication question
  */
 function displayMultiplyQuestion(operand1, operand2){
     document.getElementById('operand1').textContent = operand1;
